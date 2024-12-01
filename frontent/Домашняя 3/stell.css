@@ -1,0 +1,16 @@
+img{
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%;
+        border: 5px solid red;}
+    
+h2{background-color: rgb(19, 177, 37);
+text-align: center;}
+.stil{color: red;
+    font-style: oblique;
+    font-size: 200%;}
+code {background-color: lightgray;
+    border: 1px solid black; 
+    border-radius: 2px;}
+main{text-align: justify;}
+    

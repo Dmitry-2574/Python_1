@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15_DOM</title>
+</head>
+<body>
+    <div id="result">
+
+    </div>
+    <script>
+        let div = document.getElementById('result');
+        console.log(div); 
+        let commet = "Комментарии"
+        let commet2 = document.createComment(commet);
+        div.appendChild(commet2);
+
+        let p = document.createElement('p');
+        p.textContent = "Это новый параuраф";
+        div.appendChild(p);
+
+        let table = document.createElement('table');
+
+        let students =[['Имя', "Возраст", "Группа"],
+        ["Артем","254", "Козел"],
+        ["Максим","235", "Голубки"],
+        ["Алексей","247", "Медведики"]];
+
+        for (let a of students) {
+            let tr = document.createElement("tr");
+            for (let b of a) {
+                let td = document.createElement("td");
+                td.textContent = b;
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+            
+        }
+        div.appendChild(table);
+    </script>
+</body>
+</html>

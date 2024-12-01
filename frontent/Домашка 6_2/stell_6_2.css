@@ -1,0 +1,79 @@
+.book-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 300px;
+    }
+  
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+  
+.card-author {
+    font-weight: bold;
+    color: #555;
+    }
+  
+
+  
+.card-img {
+    max-height: 400px; /* Ограничиваем максимальную высоту изображения */
+    width: auto;
+    object-fit: contain; /* Сохраняем пропорции и избегаем обрезки */
+    margin: 0 auto; /* Центрируем изображение */
+    display: block; /* Обеспечиваем правильное выравнивание */
+    }
+.img-fluid {
+    max-width: 100%; /* Высота изображения не ограничивается */
+    height: auto; /* Пропорции изображения сохраняются */
+    
+}
+
+
+/* .a { display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    }  */
+    
+.card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 300px; /* Ширина карточки */
+        height: 400px; /* Фиксированная высота карточки */
+        border: 1px solid #ddd; /* Граница карточки */
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+.card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+.card-text {
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        display: -webkit-box; 
+        -webkit-line-clamp: 3; /* Количество строк текста */
+        -webkit-box-orient: vertical;
+      }
+      /* ### Пояснения
+
+      1. `.card` — обертка карточки, использующая flexbox для вертикального выравнивания содержимого.
+         - flex-direction: column; делает элементы внутри карточки вертикально ориентированными.
+         - justify-content: space-between; равномерно распределяет пространство между элементами, чтобы кнопка оставалась снизу.
+         - height задает фиксированную высоту карточки.
+         
+      2. `.card-body` — контейнер для текста и кнопки.
+         - flex-direction: column; задает вертикальную ориентацию.
+         - justify-content: space-between; гарантирует, что кнопка будет всегда снизу.
+      
+      3. `.card-text` — текст внутри карточки.
+         - Использует -webkit-line-clamp для ограничения количества строк текста и text-overflow: ellipsis для добавления троеточия, если текст длинный.
+      
+      Таким образом, все карточки будут иметь одинаковую высоту, а кнопка будет всегда внизу.       */

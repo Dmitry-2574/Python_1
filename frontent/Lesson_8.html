@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button onclick="alert('Привет')">Нажми меня</button> 
+
+   <button onclick="this.innerText='Нажал'">Нажми меня</button>
+   <div id='fak'></div>
+</body>
+ <script>
+     let userMessage;
+        let divElement = document.getElementById('fak');
+ 
+// Попросим пользователя ввести сообщение
+        userMessage = prompt('Введите сообщение');
+        // Выведем сообщение в div
+        divElement.innerText = userMessage;
+ 
+ </script>
+</html>

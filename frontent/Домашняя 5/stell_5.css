@@ -1,0 +1,35 @@
+img { height: auto; 
+    max-width: 100%;
+    align-items: center;
+    object-fit: cover;
+    
+    }
+.level-card {
+    margin: 50px;
+    padding: 50px;
+    border: 1px solid #c41919;
+    border-radius: 10px;
+    
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    }
+p { color: #c41919;
+    text-align: center;
+    font-family: monospace;
+        font-size: 30px;}
+div:hover {
+    background-color: rgb(177, 194, 209); 
+    transition: transform 0.7s;
+    transform: scale(1.1);
+    transform: translate(3n, -3px);
+        }
+h1 {background-color: rgb(142, 139, 170);
+    text-align: center;
+    height: 100px;
+    width: auto;
+    border: 5px solid black;
+    margin: 50px;
+    font-size: 70px;
+    font-family: cursive;
+    }       

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson_2</title>
+    <style> 
+    /* Создаем стиль для заголовка второго уровня, красим фон */
+    /* Селектор - инструмент выборки элементов со страницы */
+    h2 {background-color: aquamarine;}
+    /* Создаем класс для фона */
+    .bacd {background-color: rgb(39, 149, 179);}
+    /* Создаем класс для текста */
+    .text {color: red;}
+    /* Создаем класс для кода */
+    code {background-color: lightgray;border: 1px solid black; border-radius: 2px;box-shadow: 10px 10px 10px rgba(213, 161, 17, 0.616);}
+    img {
+      /* width: 200px;  */
+      height:200px; 
+      border-radius: 5%; 
+      border: 5px solid red;
+      box-shadow: 2px 2px 2px rgb(16, 16, 181);
+    }
+    </style>
+    
+  </head>
+    <h1>Emmit и его возможности</h1>
+
+    <h2>Простые команды</h2>
+    <ol>
+      <!-- Пример, красим фон и тест через класс-->
+      <li class="bacd text"><code>!</code> - базовая структура документа</li>
+      <!-- Пример, красим тест одного слова по ссылки на класс, обвернув слово в span, span служит для выделение отдельных элементов, чтобы код понимал что красить или делать с рим стилем -->
+      <li> <code>h1{Текст}</code> - <span class="text">Создание</span> заголовка первого уровня</li>
+      <li class="text"> <code>h2{Текст}+p{Текст}</code> - создание заголовка второго уровня</li>
+      <li class="bacd"> <code>ul>li*3{$.Элемет списка}</code> - создание списка из трех элеменов. Будет присутствовать нумерация</li>
+    </ol>
+    <h2>Сложные команды</h2>
+    <!-- Атрибуты, классы, id -->
+    <p><code>p.text{Привет}</code> - создание абзаца с классом text и с текстом "Привет"</p>
+    <!-- Пример -->
+    <p class="text">Привет</p>
+    <!-- Параграф, спан с классом -->
+    <code>span.text>code{print("Hello,Word)}</code> - создание спана с классом text и вложенным тегом code и текстом "print("Hello, World!")"
+    <!-- Пример -->
+    <span class="text"><code>(Hello, Word)</code></span>
+    <!-- Сделаем заголовок H2 с зеленной заливкой, Пример -->
+    <p><code>h2 {Вставка изображения в HTML}+img[src="1.jpg" alt="Фотография пользователя"</code> - создания заголовка второго уровня и вставка изображения с атрибутами src и alt</p>
+    <h2 style="background-color: rgb(83, 172, 48);">
+    3 Способа стилизовать HTML</h2>
+    <!-- Опиши 3 способа в параграфах -->
+    <p>1.Встроенные стили - <code>&lt;h2 style=background-color: lightgreen;"&gt;3 способа стилизовать HTML&lt;/h2&gt;</code></p>
+    <p>2. Встроенные стили - <code>&lt;style&gt; h2{background-color: lightgreen;} &lt;/style&gt;</code></p>
+    <p>3. Внешние стили - <code>&lt;link rel="stylesheet" href="style.css"&gt;</code></p>
+    
+    <!-- Emmet - h2{Вставка изображения в HTML}+img[src="1.jpg" alt="Фотография"] -->
+    <h2>Вставка изображения в HTML</h2>
+    <img src="1.jpg" alt="Белуха">
+    
+    <h2>Как сделать шрифт жирным или курсивом</h2>
+    <p><code>&lt;b&gt;</code> - тег для выделения текста жирным</p>
+    <p><code>&lt;i&gt;</code> - тег для выделение текста курсивным</p>
+  </body>
+</html>
+  
