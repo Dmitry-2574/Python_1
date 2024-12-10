@@ -125,6 +125,22 @@ print(json_string)
 # 3. json.load() - читает файл JSON и преобразует его в объект Python
 # 4. json.dump() - записывает объект Python в файл JSON
 
+# JSON файлы
+# Load - загрузка
+# Dump - выгрузка
 
+# Сохраним данные в JSON файл
+with open("lesson_17/test.json", "w", encoding="utf-8") as file:
+    json.dump(python_data, file, indent=4, ensure_ascii=False)
+
+
+# Загрузка данных из JSON файла
+with open("lesson_17/test.json", "r", encoding="utf-8") as file:
+    data = json.load(file)
+
+
+from pprint import pprint
+
+pprint(data, sort_dicts=False, indent=2)
 
 
