@@ -21,3 +21,6 @@ shopping_list = [
 yaml_string = yaml.dump(shopping_list, allow_unicode=True)
 print(yaml_string)
 
+with open("lesson_18\config.yaml", "r", encoding="utf-8") as file:
+    yaml_data = yaml.load(file, Loader=yaml.Loader)
+    print(yaml_data)
