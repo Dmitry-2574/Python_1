@@ -30,70 +30,114 @@ Python: Генераторы и функции all(), any(), yield
     - Цепочки генераторов
     - Работа с файлами через генераторы
 """
-# all_list = [True, True, True]
-# any_list = [True, False, False]
 
-# print(all(all_list))
-# print(all(any_list))
-
-# print(any(all_list))
-# print(any(any_list))
-# Функция any() в программировании — это встроенная функция, которая проверяет, содержит ли итерируемый объект (например, список, кортеж, множество или строку) хотя бы один элемент, который оценивается как истинный в булевом контексте.  Она возвращает True, если хотя бы один элемент истинен, и False в противном случае.  Пустой итерируемый объект всегда оценивается как False.
-
-
-# список строковых чисел
-
-# num_list = ['1', '2', '3', '4', '5']
-
-# all_nums = all(map(str.isdigit, num_list))
-
-from typing import Generator
-from cities import cities_list
-
-
-# result = any(map(lambda city: city["population"] > 10000000, cities_list))
-# print(result)
 # Функция map() в программировании применяет заданную функцию к каждому элементу итерируемого объекта (например, списка, кортежа) и возвращает итератор, содержащий результаты.  Другими словами, она "отображает" (map) каждый элемент на новый, преобразованный значение.  Это очень эффективный способ применить одну и ту же операцию ко множеству данных.
 
 # lambda — это ключевое слово в некоторых языках программирования (включая Python), используемое для создания анонимных функций.  Анонимные функции — это функции без имени, которые обычно используются для коротких, простых операций, не требующих определения отдельной функции с помощью def.  Они очень удобны для использования в качестве аргументов других функций, особенно там, где требуется краткая функция "на лету".
 
-# def pie_generator(n) -> Generator[str, any, None]:
-#     for i in range(n):
-#         yield f"Пирожок {i}"
+
 # Ключевое слово yield в программировании используется для создания генераторов.  В отличие от обычных функций, которые возвращают значение и завершают свое выполнение, генератор, используя yield, возвращает значение и приостанавливает свое выполнение, сохраняя текущее состояние.  При следующем вызове генератора выполнение возобновляется с места остановки.  Это позволяет генерировать последовательность значений по запросу, экономя память, особенно при работе с очень большими наборами данных.  Вместо того, чтобы хранить все значения в памяти одновременно, генератор производит их по одному, по мере необходимости.
 
-# five_pies: Generator[str, any, None] = pie_generator(5)
-
-# print(type(five_pies))
-# print(five_pies)
-
-# print(next(five_pies))
-# print(next(five_pies))
-# print(next(five_pies))
-# print(next(five_pies))
-# print(next(five_pies))
-# print(next(five_pies))
-
-# for pie in five_pies:
-#     print(f"Пирожки из цикла: {pie}")
-
-# ten_pies: Generator[str, any, None] = pie_generator(10)
-
-# pies_list = list(ten_pies)
-# print(pies_list)
-# print(next(ten_pies))
 
 
-def cities_by_population(min_population: int) -> Generator[str, any, None]:
+all_list = [True, True, True]
+any_list = [True, False, False]
+
+# Как будет работать all и any
+print(all(all_list))  # True
+print(all(any_list))  # False
+
+print(any(all_list))  # True
+print(any(any_list))  # True
+
+# Список строковых чисел
+nums_list = ["1", "2", "3", "4", "5"]
+
+# Проверим через all что все элементы проходят isdigit
+all_nums = all(map(str.isdigit, nums_list))  # True
+
+# Создание генераторного выражения
+all_nums = all(num.isdigit() for num in nums_list)
+
+
+from math import pi
+from cities import cities_list
+
+# Проверим, что в наборе есть город с населением более 10000000
+
+result = any(map(lambda city: city["population"] > 10000000, cities_list))
+print(result)  # True
+
+# Генераторы - функции которые возвращают по одному элементу
+# Генератор пирожков
+
+
+def pie_generator(n):
+    for i in range(n):
+        yield f"Пирожок {i}"
+
+
+# Объект - генератор
+five_pies = pie_generator(5)
+print(type(five_pies))  # <class 'generator'>
+print(five_pies)  # <generator object pie_generator at 0x000001E714C7A9B0>
+
+print(next(five_pies))  # Пирожок 0
+print(next(five_pies))  # Пирожок 1
+print(next(five_pies))  # Пирожок 2
+# print(next(five_pies))  # Пирожок 3
+# print(next(five_pies))  # Пирожок 4
+# print(next(five_pies))  # Пирожок 5
+# print(next(five_pies))  # StopIteration Exception
+
+for pie in five_pies:
+    print(f"Пирожок из цикла: {pie}")
+
+ten_pies = pie_generator(10)
+
+pies_list = list(ten_pies)
+print(pies_list) 
+# print(next(ten_pies))  # StopIteration Exception
+
+
+# Функция, создающая огромный список в памяти
+def get_huge_list(n):
+    result = []
+    for i in range(n):
+        result.append(i ** 2)
+    return result
+
+# Генератор, выдающий значения по одному
+def get_huge_generator(n):
+    for i in range(n):
+        yield i ** 2
+
+# Демонстрация разницы
+# Функция попытается создать огромный список в памяти
+# print("Начинаем работу с функцией...")
+# huge_list = get_huge_list(100_000_000)  # Это займет много памяти и времени
+
+# Генератор будет выдавать значения по одному
+# print("Начинаем работу с генератором...")
+# for i, value in enumerate(get_huge_generator(100_000_000)):
+#     if i % 1_000_000 == 0:
+#         print(f"Сгенерировано {i:,} значений. Текущее значение: {value}")
+
+
+
+
+
+def cities_by_population(min_population: int):
     for city in cities_list:
         if city["population"] > min_population:
-            yield city
+            yield f'Город: {city["name"]}, население: {city["population"]}'
+
 
 user_num = int(input("Введите минимальное население: "))
 
 for city in cities_by_population(user_num):
     print(city)
-    user_answer: str = input("Хотите продолжить? да/нет: ")
-    if user_answer.lower() == "нет":
-        print("До свидания")
+    user_answer = input("Хотите продолжить? (y/n): ")
+    if user_answer.lower() == "n":
+        print("До свидания!")
         break
