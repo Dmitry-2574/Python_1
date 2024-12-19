@@ -39,7 +39,6 @@ Python: Генераторы и функции all(), any(), yield
 # Ключевое слово yield в программировании используется для создания генераторов.  В отличие от обычных функций, которые возвращают значение и завершают свое выполнение, генератор, используя yield, возвращает значение и приостанавливает свое выполнение, сохраняя текущее состояние.  При следующем вызове генератора выполнение возобновляется с места остановки.  Это позволяет генерировать последовательность значений по запросу, экономя память, особенно при работе с очень большими наборами данных.  Вместо того, чтобы хранить все значения в памяти одновременно, генератор производит их по одному, по мере необходимости.
 
 
-
 all_list = [True, True, True]
 any_list = [True, False, False]
 
@@ -133,11 +132,46 @@ def cities_by_population(min_population: int):
             yield f'Город: {city["name"]}, население: {city["population"]}'
 
 
-user_num = int(input("Введите минимальное население: "))
+# user_num = int(input("Введите минимальное население: "))
 
-for city in cities_by_population(user_num):
+# for city in cities_by_population(user_num):
+#     print(city)
+#     user_answer = input("Хотите продолжить? (y/n): ")
+#     if user_answer.lower() == "n":
+#         print("До свидания!")
+#         break
+
+
+# Вспомним какие у нас есть однострочники?
+
+# Выражение списка (list comprehension)
+cities_names = [city["name"] for city in cities_list]
+print(cities_names)
+# Выражение множества (set comprehension)
+cities_names = {city["name"] for city in cities_list}
+print(cities_names)
+# Выражение словаря (dict comprehension)
+cities_names = {city["name"]: city["population"] for city in cities_list}
+print(cities_names)
+
+# Генераторное выражение (generator expression)
+cities_names = (city["name"] for city in cities_list)
+
+
+
+min_population = 1_000_000
+# Генераторное выражение
+cities_generator = (city["name"] for city in cities_list if city["population"] > min_population)
+
+cities_generator = (f'Город: {city["name"]}, население: {city["population"]}' for city in cities_list if city["population"] > min_population)
+
+
+
+for city in cities_generator:
     print(city)
     user_answer = input("Хотите продолжить? (y/n): ")
     if user_answer.lower() == "n":
         print("До свидания!")
         break
+
+
