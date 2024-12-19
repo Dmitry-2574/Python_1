@@ -30,61 +30,70 @@ Python: Генераторы и функции all(), any(), yield
     - Цепочки генераторов
     - Работа с файлами через генераторы
 """
-all_list = [True, True, True]
-any_list = [True, False, False]
+# all_list = [True, True, True]
+# any_list = [True, False, False]
 
-print(all(all_list))
-print(all(any_list))
+# print(all(all_list))
+# print(all(any_list))
 
-print(any(all_list))
-print(any(any_list))
+# print(any(all_list))
+# print(any(any_list))
 # Функция any() в программировании — это встроенная функция, которая проверяет, содержит ли итерируемый объект (например, список, кортеж, множество или строку) хотя бы один элемент, который оценивается как истинный в булевом контексте.  Она возвращает True, если хотя бы один элемент истинен, и False в противном случае.  Пустой итерируемый объект всегда оценивается как False.
 
 
 # список строковых чисел
 
-num_list = ['1', '2', '3', '4', '5']
+# num_list = ['1', '2', '3', '4', '5']
 
-all_nums = all(map(str.isdigit, num_list))
+# all_nums = all(map(str.isdigit, num_list))
 
 from typing import Generator
 from cities import cities_list
 
 
-result = any(map(lambda city: city["population"] > 10000000, cities_list))
-print(result)
+# result = any(map(lambda city: city["population"] > 10000000, cities_list))
+# print(result)
 # Функция map() в программировании применяет заданную функцию к каждому элементу итерируемого объекта (например, списка, кортежа) и возвращает итератор, содержащий результаты.  Другими словами, она "отображает" (map) каждый элемент на новый, преобразованный значение.  Это очень эффективный способ применить одну и ту же операцию ко множеству данных.
 
 # lambda — это ключевое слово в некоторых языках программирования (включая Python), используемое для создания анонимных функций.  Анонимные функции — это функции без имени, которые обычно используются для коротких, простых операций, не требующих определения отдельной функции с помощью def.  Они очень удобны для использования в качестве аргументов других функций, особенно там, где требуется краткая функция "на лету".
 
-def pie_generator(n) -> Generator[str, any, None]:
-    for i in range(n):
-        yield f"Пирожок {i}"
+# def pie_generator(n) -> Generator[str, any, None]:
+#     for i in range(n):
+#         yield f"Пирожок {i}"
 # Ключевое слово yield в программировании используется для создания генераторов.  В отличие от обычных функций, которые возвращают значение и завершают свое выполнение, генератор, используя yield, возвращает значение и приостанавливает свое выполнение, сохраняя текущее состояние.  При следующем вызове генератора выполнение возобновляется с места остановки.  Это позволяет генерировать последовательность значений по запросу, экономя память, особенно при работе с очень большими наборами данных.  Вместо того, чтобы хранить все значения в памяти одновременно, генератор производит их по одному, по мере необходимости.
 
-five_pies: Generator[str, any, None] = pie_generator(5)
+# five_pies: Generator[str, any, None] = pie_generator(5)
 
-print(type(five_pies))
-print(five_pies)
+# print(type(five_pies))
+# print(five_pies)
 
-print(next(five_pies))
-print(next(five_pies))
 # print(next(five_pies))
 # print(next(five_pies))
 # print(next(five_pies))
 # print(next(five_pies))
+# print(next(five_pies))
+# print(next(five_pies))
 
-for pie in five_pies:
-    print(f"Пирожки из цикла: {pie}")
+# for pie in five_pies:
+#     print(f"Пирожки из цикла: {pie}")
 
-ten_pies: Generator[str, any, None] = pie_generator(10)
+# ten_pies: Generator[str, any, None] = pie_generator(10)
 
-pies_list = list(ten_pies)
-print(pies_list)
-print(next(ten_pies))
+# pies_list = list(ten_pies)
+# print(pies_list)
+# print(next(ten_pies))
 
 
-def cities_by_population(min_population: int) -> Generator[dict[str, Any], Any, None]:
+def cities_by_population(min_population: int) -> Generator[str, any, None]:
     for city in cities_list:
         if city["population"] > min_population:
             yield city
+
+user_num = int(input("Введите минимальное население: "))
+
+for city in cities_by_population(user_num):
+    print(city)
+    user_answer: str = input("Хотите продолжить? да/нет: ")
+    if user_answer.lower() == "нет":
+        print("До свидания")
+        break
