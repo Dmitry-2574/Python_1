@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Владимир",
+        "age": 25,
+        "is_married": true
+    },
+    {
+        "name": "Андрей",
+        "age": 25,
+        "is_married": true
+    },
+    {
+        "name": "Алексей",
+        "age": 25,
+        "is_married": true
+    }
+]
